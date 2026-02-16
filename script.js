@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  // Prevent Chrome pull-to-refresh
+  document.addEventListener("touchmove", function(e) {
+    e.preventDefault();
+  }, { passive: false });
+
 const messages = [
   "I’ll always be here for you — to listen, to understand, to just be there.",
   "If talking lightens your heart even a little, I could listen to you for hours and still want more.",
@@ -113,13 +118,15 @@ function enableDrag(element) {
     document.addEventListener("touchend", end);
   }
 
-  function move(e) {
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+function move(e) {
+  e.preventDefault();
 
-    element.style.left = (clientX - offsetX) + "px";
-    element.style.top = (clientY - offsetY) + "px";
-  }
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+  element.style.left = (clientX - offsetX) + "px";
+  element.style.top = (clientY - offsetY) + "px";
+}
 
   function end() {
 
@@ -239,7 +246,7 @@ function startConfettiRain() {
   confettiInterval = setInterval(() => {
 
     // 🔥 Increase this number for more confetti per burst
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 9; i++) {
 
       const confetti = document.createElement("div");
       confetti.className = "confetti-piece";
@@ -261,7 +268,7 @@ function startConfettiRain() {
       }, fallDuration);
     }
 
-  }, 50); // 🔥 Faster spawn rate (lower = more intense)
+  }, 200); // 🔥 Faster spawn rate (lower = more intense)
 }
 
 function enableFreeDrag(element) {
