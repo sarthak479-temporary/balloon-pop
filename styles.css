@@ -1,0 +1,208 @@
+/* ---------------- GLOBAL ---------------- */
+
+body {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-image: url("bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url("images/bg.png");
+}
+
+#background-glow {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 60% 30%, rgba(255, 105, 180, 0.15), transparent 70%);
+  animation: glow 8s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+/* ---------------- ENVELOPE ---------------- */
+
+.envelope-container {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 360px;
+  height: 240px;
+  transition: all 0.6s cubic-bezier(.4,0,.2,1);
+}
+
+.envelope {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #ff6f91, #ff4d6d);
+  border-radius: 8px;
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.5),
+    inset 0 6px 12px rgba(255,255,255,0.25),
+    inset 0 -8px 20px rgba(0,0,0,0.35);
+  overflow: visible;
+  cursor: pointer;
+  transform-style: preserve-3d;
+}
+
+.flap {
+  position: absolute;
+  width: 100%;
+  height: 130px;
+  top: 0;
+  left: 0;
+
+  background: linear-gradient(145deg, #c9184a, #a4133c);
+
+  /* TRIANGLE SHAPE */
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(.4,0,.2,1);
+
+  box-shadow:
+    inset 0 8px 16px rgba(255,255,255,0.25),
+    0 20px 40px rgba(0,0,0,0.5);
+
+  z-index: 100;
+}
+
+/* Open 3D */
+.envelope.open .flap {
+  transform: rotateX(160deg);
+}
+
+/* ---------------- BALLOON ---------------- */
+
+.balloon {
+  position: absolute;
+  width: 95px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ff6a88, #ff99ac);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.4),
+    inset 0 5px 10px rgba(255,255,255,0.3);
+  cursor: pointer;
+}
+
+.balloon::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  width: 2px;
+  height: 40px;
+  background: rgba(255,255,255,0.5);
+}
+
+/* ---------------- CARD ---------------- */
+
+.card {
+  position: absolute;
+  width: 300px;
+  padding: 28px;
+  border-radius: 20px;
+
+  /* Liquid glass look */
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+
+  color: #1d1d1f;
+  font-weight: 300;
+  font-size: 19px;
+  letter-spacing: 0.3px;
+  line-height: 1.5;
+  text-align: center;
+
+  /* your existing animation */
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  animation: cardFadeIn 0.5s cubic-bezier(.4,0,.2,1) forwards;
+}
+
+@keyframes cardFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.instruction {
+  font-size: 11px;
+  font-weight: 400;
+  margin-top: 14px;
+  opacity: 0.6;
+  letter-spacing: 0.5px;
+  text-transform: none;
+}
+
+.arrow {
+  font-size: 18px;
+  margin-top: 6px;
+  animation: bounce 1.2s infinite;
+  color: #ff8fab;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* ---------------- CONFETTI ---------------- */
+
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  animation: fall 3s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(800px) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* -------- CONTINUOUS CONFETTI -------- */
+
+.confetti-piece {
+  position: fixed;
+  top: -10px;
+  width: 8px;
+  height: 8px;
+  z-index: 9999;
+  pointer-events: none;
+  transition: top 4s linear;
+  border-radius: 2px;
+}
+
+.credit {
+  position: fixed;
+  bottom: 20px;
+  right: 24px;
+
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+
+  color: rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.3px;
+
+  z-index: 999;
+}
