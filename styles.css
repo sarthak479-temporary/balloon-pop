@@ -21,8 +21,10 @@ html, body {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  width: min(82vw, 320px); /* MATCH CARD */
-  aspect-ratio: 4 / 3;      /* responsive height */
+
+  width: min(68vw, 240px);  /* SAME as card */
+  aspect-ratio: 4 / 3;      /* keeps proper shape */
+
   transition: all 0.6s cubic-bezier(.4,0,.2,1);
 }
 
@@ -31,10 +33,12 @@ html, body {
   width: 100%;
   height: 100%;
   background: linear-gradient(145deg, #ff6f91, #ff4d6d);
-  border-radius: 14px;
+  border-radius: 12px;
+
   box-shadow:
-    0 20px 40px rgba(0,0,0,0.3),
-    inset 0 4px 8px rgba(255,255,255,0.25);
+    0 14px 28px rgba(0,0,0,0.25),
+    inset 0 3px 6px rgba(255,255,255,0.25);
+
   overflow: visible;
   cursor: pointer;
 }
@@ -86,30 +90,30 @@ html, body {
 .card {
   position: absolute;
 
-  width: min(75vw, 280px);   /* smaller than before */
-  padding: 14px 16px;        /* reduced padding */
-  border-radius: 16px;
+  width: min(60vw, 210px);   /* smaller than envelope */
+  padding: 12px 14px;
+  border-radius: 14px;
 
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(18px) saturate(170%);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
 
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.22);
 
   box-shadow:
-    0 8px 24px rgba(0, 0, 0, 0.12),
+    0 6px 18px rgba(0, 0, 0, 0.12),
     inset 0 1px 1px rgba(255, 255, 255, 0.4);
 
   color: #1d1d1f;
 
-  font-size: clamp(14px, 3.6vw, 18px); /* smaller responsive font */
-  line-height: 1.4;
+  font-size: clamp(12px, 3vw, 15px);
+  line-height: 1.35;
   font-weight: 300;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.15px;
   text-align: center;
 
   opacity: 0;
-  transform: translateY(18px) scale(0.98);
+  transform: translateY(16px) scale(0.98);
   animation: cardFadeIn 0.45s cubic-bezier(.4,0,.2,1) forwards;
 }
 
@@ -121,10 +125,9 @@ html, body {
 }
 
 .instruction {
-  margin-top: 10px;
-  font-size: 10px;
-  font-weight: 400;
-  opacity: 0.55;
+  margin-top: 8px;
+  font-size: 9px;
+  opacity: 0.5;
 }
 
 /* ---------------- CONFETTI ---------------- */
@@ -144,10 +147,16 @@ html, body {
 
 .credit {
   position: fixed;
-  bottom: 18px;
-  right: 20px;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
 
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 300;
-  color: rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.2px;
+
+  color: rgba(0, 0, 0, 0.55);
+  opacity: 0.8;
+
+  pointer-events: none; /* prevents blocking clicks */
 }
