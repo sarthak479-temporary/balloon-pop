@@ -23,8 +23,10 @@ const finalSound = document.getElementById("finalSound");
 /* ---------------- ENVELOPE VISIBILITY ---------------- */
 
 function setEnvelopeVisibility(percentVisible) {
-  const height = envelopeContainer.offsetHeight;
+
+  const height = 240; // FIXED height (same as CSS)
   const visibleHeight = height * (percentVisible / 100);
+
   envelopeContainer.style.bottom = -(height - visibleHeight) + "px";
 }
 
