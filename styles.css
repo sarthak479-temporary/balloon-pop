@@ -86,31 +86,31 @@ html, body {
 .card {
   position: absolute;
 
-  width: min(82vw, 320px); /* RESPONSIVE */
-  padding: 18px 20px;
-  border-radius: 18px;
+  width: min(75vw, 280px);   /* smaller than before */
+  padding: 14px 16px;        /* reduced padding */
+  border-radius: 16px;
 
   background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(22px) saturate(180%);
-  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 
   border: 1px solid rgba(255, 255, 255, 0.25);
 
   box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.15),
+    0 8px 24px rgba(0, 0, 0, 0.12),
     inset 0 1px 1px rgba(255, 255, 255, 0.4);
 
   color: #1d1d1f;
 
-  font-size: clamp(15px, 4vw, 20px); /* TEXT AUTO-SCALE */
-  line-height: 1.45;
+  font-size: clamp(14px, 3.6vw, 18px); /* smaller responsive font */
+  line-height: 1.4;
   font-weight: 300;
   letter-spacing: 0.2px;
   text-align: center;
 
   opacity: 0;
-  transform: translateY(20px) scale(0.98);
-  animation: cardFadeIn 0.5s cubic-bezier(.4,0,.2,1) forwards;
+  transform: translateY(18px) scale(0.98);
+  animation: cardFadeIn 0.45s cubic-bezier(.4,0,.2,1) forwards;
 }
 
 @keyframes cardFadeIn {
@@ -121,10 +121,10 @@ html, body {
 }
 
 .instruction {
-  margin-top: 14px;
-  font-size: 11px;
+  margin-top: 10px;
+  font-size: 10px;
   font-weight: 400;
-  opacity: 0.6;
+  opacity: 0.55;
 }
 
 /* ---------------- CONFETTI ---------------- */
